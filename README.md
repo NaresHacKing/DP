@@ -3,7 +3,7 @@
 ## Setup
 Create a folder and put all the files inside it.
 
-Create a virtual environtment - virtualenv env
+Create a virtual environtment - <code>virtualenv env</code>
 
 Activate VirtualENV - ubuntu : source env/bin/activate || windows : . .\env\Scripts\activate
 
