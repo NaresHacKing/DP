@@ -2,8 +2,8 @@
 
 ## Setup
 Create a folder and put all the files inside it.</br>
-Create a virtual environtment - <code>virtualenv env</code>
-Activate VirtualENV - ubuntu : source env/bin/activate || windows : . .\env\Scripts\activate
-Run requirements.txt - pip install -r requirements.txt
-Run the Application - python manage.py runserver
+Create a virtual environtment - <code>virtualenv env</code><br>
+Activate VirtualENV - ubuntu : <code>source env/bin/activate</code> || windows : <code>. .\env\Scripts\activate</code><br>
+Run requirements.txt - <code>pip install -r requirements.txt</code><br>
+Run the Application - <code>python manage.py runserver</code><br>
 Migrate
