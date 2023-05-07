@@ -1,7 +1,7 @@
 # Disease Prediction Based on Symptoms using Machine Learning Algorithms
 
 ## Setup
-### Create a folder and put all the files inside it.
+:: marker Create a folder and put all the files inside it.
 
 ### Create a virtual environtment - <code>virtualenv env</code>
 
