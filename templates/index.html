@@ -7,6 +7,23 @@
         <script src="{% static 'js/jquery-2.2.4.js' %}"></script>
         <!--<script src="{% static 'js/bootstrap.min.js' %}"></script>
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"/>-->
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<script src="js/jquery-2.2.4.js"></script>-->
+        <!--<script src="js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>-->
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
     </head>
 <body>
@@ -21,7 +38,7 @@
                     <h3>Step <span class="step-number">1</span></h3>
                     <p class="step-number-content active">Enter your personal information.
                     </p>
-                    <p class="step-number-content d-none">GDiseases your Parents or Forefathers having.</p>
+                    <p class="step-number-content d-none">Diseases your Parents or Forefathers having.</p>
                     <p class="step-number-content d-none">Can you talk about your Symptoms more clearly.</p>
                     <p class="step-number-content d-none">Add your profile piccture and let companies find youy fast.
                     </p>
@@ -47,7 +64,7 @@
                         <div class="input-div">
                             <input type="text" required require id="user_name">
                             <span>First Name</span>
-                        </div>    
+                        </div>
                     </div>
                     <div class="input-text">
                         <div class="input-div">
@@ -77,11 +94,11 @@
                         <h2>Parents Disease</h2>
                         <p>Diseases your Parents or Forefathers having.</p>
                     </div>
-                    
+
                     <div class="input-text">
-                        <div class="input-div" id="dis" name="dis">                           
+                        <div class="input-div" id="dis" name="dis">
                             <select id="diseases" name="diseases"></select>
-                            <p id="add-dis" name="add-dis"></p>                          
+                            <p id="add-dis" name="add-dis"></p>
                         </div>
                     </div>
                     <div class="buttons button_space">
@@ -96,17 +113,24 @@
                         <h2>Select Symptoms</h2>
                         <p>Can you talk about your Symptoms?</p>
                     </div>
-                    <div class="input-text">
-                        <div class="input-div">
-                            <select id="sym" name="sym">
-                                <option value="none" selected disabled hidden>Select an Option</option>
-                            </select>
-                        </div>
+                    <div class="text">
+                        <h4>Select the Symptom which you are experiencing.</h4>
                     </div>
                     <div class="input-text">
                         <div class="input-div">
+                            <select id="sym" name="sym">
+                                <option value="none" selected disabled hidden>Select Symptom</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <h4>From how many days you are experiencing.</h4>
+                    </div>
+
+                    <div class="input-text">
+                        <div class="input-div">
                             <select disabled id="days" name="days">
-                                <option value="none" selected disabled hidden>Select an Option</option>
+                                <option value="none" selected disabled hidden>Select Days</option>
                             </select>
                         </div>
                     </div>
@@ -127,7 +151,9 @@
 
 
                 <div class="main">
-                    
+                    <div class="text">
+                        <h4>Select the Symptoms which you are experiencing.</h4>
+                    </div>
                     <div class="input-text">
                         <div class="input-div">
                             <p id="symptoms-list" name="symptoms-list"></p>
@@ -171,9 +197,9 @@
                     <div class="text">
                         <!--<p id="result" name="result"></p>
                         <h2>Congratulations!</h2>-->
-                        
+
                                 <p style="color:black;" id="result" name="result">Mr./Mrs. <span class="shown_name"></span><br></p>
-                            
+
                     </div>
                 </div>
 
@@ -195,7 +221,7 @@
     //var checkRadio=null;
     $(document).ready(function(){
         $("#next_button1").click(function(){
-            var checkRadio = document.querySelector('input[name="radio"]:checked').value;            
+            var checkRadio = document.querySelector('input[name="radio"]:checked').value;
             //alert(checkRadio)
             $.ajax({
                 async: false,
@@ -221,8 +247,8 @@
                 }
 
             });
-        });   
-        
+        });
+
         $("#add").click(function(){
             var sel = document.createElement('SELECT');
             sel.setAttribute('id', 'sel'+count);
@@ -231,7 +257,7 @@
                         $('#sel'+count).append("<option value='"+res_dis[key]+"'>"+res_dis[key]+"</option>");
             }
             count+=1;
-        });   
+        });
     });
 </script>
 
@@ -255,10 +281,16 @@
             }
 
         });
-    });   
+    });
 });
 
 </script>
 <script type = "text/javascript" src="{% static 'js/sym_check.js' %}" ></script>
+
+    <section class="footer">
+        <p> Design & Development - NaresH PRO</p>
+    </section>
+
 </body>
 </html>
+

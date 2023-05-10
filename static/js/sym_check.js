@@ -56,15 +56,15 @@ $(document).ready(function(){
                 //alert($('input[name="'+dict[key]+'"]:checked').val());
             }
 
-            console.log(list)
+            //console.log(list)
 
             for(var i=0;i<list.length;i++){
             
                     l+=list[i]+' '
             }
             l=l.trim();
-            console.log(days);
-            console.log(dis);
+            //console.log(days);
+            //console.log(dis);
             //console.log(checked_val);
             //console.log(l);
             $.ajax({
@@ -73,8 +73,8 @@ $(document).ready(function(){
                 //async: true,
                 data: {'days': days, 'dis':dis, 'list': l},
                 success: function(response){
-                    $('#result').append("You may have: "+response.present + "<br/>"+ response.desc1);
-                    console.log(response.present);
+                    $('#result').append("You may have: "+response.present+"<br/>"+ response.desc1);
+                    console.log("res "+response.sec);
                     //alert('success');
     
                 }

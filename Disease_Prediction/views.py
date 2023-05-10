@@ -3,7 +3,6 @@ from django.http import HttpResponse, JsonResponse
 import json
 import csv
 
-import re
 import pandas as pd
 from sklearn import preprocessing
 from sklearn.tree import DecisionTreeClassifier,_tree
@@ -13,8 +12,8 @@ from sklearn.model_selection import cross_val_score
 from sklearn.svm import SVC
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
-training = pd.read_csv('E:\Project\DP\static/assets\Training.csv')
-testing= pd.read_csv('E:\Project\DP\static/assets\Testing.csv')
+training = pd.read_csv('static/assets/Training.csv')
+testing= pd.read_csv('static/assets/Testing.csv')
 cols= training.columns
 cols= cols[:-1]
 x = training[cols]
@@ -27,7 +26,7 @@ le.fit(y)
 y = le.transform(y)
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=42)
 testx    = testing[cols]
-testy    = testing['prognosis']  
+testy    = testing['prognosis']
 testy    = le.transform(testy)
 clf1  = DecisionTreeClassifier()
 clf = clf1.fit(x_train,y_train)
@@ -49,15 +48,14 @@ precautionDictionary=dict()
 symptoms_dict = {}
 dic = {}
 
-
 # Create your views here.
 
 def index(request):
-    
+
     return render(request, 'index.html')
 
 def dis_list(request):
-    file = open("E:\Project\DP\static/assets\Diseases.csv")
+    file = open("static/assets/Diseases.csv")
     csvreader = csv.reader(file)
     rows = []
     for row in csvreader:
@@ -75,7 +73,7 @@ def dis_list(request):
     return JsonResponse(context)
 
 def symptoms_list(request):
-    file = open("E:\Project\DP\static/assets\Symptoms.csv")
+    file = open("static/assets/Symptoms.csv")
     sym = csv.reader(file)
     rows = []
     for row in sym:
@@ -133,7 +131,7 @@ def check_sym(request):
                 #print("Are you experiencing any ")
                 print(symptoms_given)
                 response['result']=list(symptoms_given)
-            
+
         recurse(0,1)
     return JsonResponse({'result':list(symptoms_given)})
 
@@ -142,7 +140,7 @@ def check_disease(request):
     getDescription()
     getprecautionDict()
     #temp = loader.get_template("check_symptoms.html")
-    file = open("E:\Project\DP\static/assets\Symptoms.csv")
+    file = open("static/assets/Symptoms.csv")
     sym = csv.reader(file)
     rows = []
     for row in sym:
@@ -224,7 +222,7 @@ def check_disease(request):
                 print("Take following measures : ")
                 for  i,j in enumerate(precution_list):
                     print(i+1,")",j)"""
-                
+
         recurse(0, 1)
         #return JsonResponse({'present': present_disease[0],'sec':second_prediction[0], 'desc1': description_list[present_disease[0]], 'desc2':description_list[second_prediction[0]]})
     #else: print('no response')
@@ -232,7 +230,7 @@ def check_disease(request):
 
 
 def sec_predict(symptoms_exp):
-    df = pd.read_csv('E:\Project\DP\static/assets\Training.csv')
+    df = pd.read_csv('static/assets/Training.csv')
     X = df.iloc[:, :-1]
     y = df['prognosis']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=20)
@@ -248,7 +246,7 @@ def sec_predict(symptoms_exp):
 
 def print_disease(node):
     node = node[0]
-    val  = node.nonzero() 
+    val  = node.nonzero()
     disease = le.inverse_transform(val[0])
     return list(map(lambda x:x.strip(),list(disease)))
 
@@ -266,7 +264,7 @@ def calc_condition(exp,days):
 
 def getDescription():
     global description_list
-    with open('E:\Project\DP\static/assets\symptom_Description.csv') as csv_file:
+    with open('static/assets/symptom_Description.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
         for row in csv_reader:
@@ -275,7 +273,7 @@ def getDescription():
 
 def getSeverityDict():
     global severityDictionary
-    with open('E:\Project\DP\static/assets\Symptom_severity.csv') as csv_file:
+    with open('static/assets/Symptom_severity.csv') as csv_file:
 
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
@@ -288,7 +286,7 @@ def getSeverityDict():
 
 def getprecautionDict():
     global precautionDictionary
-    with open('E:\Project\DP\static/assets\symptom_precaution.csv') as csv_file:
+    with open('static/assets/symptom_precaution.csv') as csv_file:
 
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
